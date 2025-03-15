@@ -1,0 +1,9 @@
+#!/bin/bash
+
+led=`cat /sys/class/leds/input3::numlock/brightness`
+
+if [ $led -eq 0 ]; then
+    echo "<span color='red'> Numlock</span>"
+else
+    echo "<span color='light green'> Numlock</span>"
+fi

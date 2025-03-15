@@ -1,0 +1,34 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[wifi]
+command=~/.config/i3blocks/wifi
+interval=1
+markup=pango
+
+[eth]
+command=~/.config/i3blocks/eth
+interval=1
+markup=pango
+
+[battery]
+command=~/.config/i3blocks/battery
+interval=1
+markup=pango
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+
+[user]
+command=echo "mat"; if [ $button ]; then wlogout; fi
+interval=once

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+battery=`cat /sys/class/power_supply/BAT0/capacity`
+status=`cat /sys/class/power_supply/BAT0/status`
+
+#
+
+if [ $battery -gt 80 ]; then
+    if [ $status == "Charging" ]; then
+        echo "<span color='lime'> $battery%</span>"
+    else
+        echo "<span color='lime'> $battery%</span>"
+    fi
+elif [ $battery -gt 60 ]; then
+    if [ $status == "Charging" ]; then
+        echo "<span color='light green'> $battery%</span>"
+    else
+        echo "<span color='light green'> $battery%</span>"
+    fi
+elif [ $battery -gt 40 ]; then
+    if [ $status == "Charging" ]; then
+        echo "<span color='yellow'> $battery%</span>"
+    else
+        echo "<span color='yellow'> $battery%</span>"
+    fi
+elif [ $battery -gt 20 ]; then
+    if [ $status == "Charging" ]; then
+        echo "<span color='orange'> $battery%</span>"
+    else
+        echo "<span color='orange'> $battery%</span>"
+    fi
+else
+    if [ $(( $(date +%s) % 2 )) -eq 0 ]; then
+        if [ $status == "Charging" ]; then
+            echo "<span color='red'> $battery%</span>"
+        else
+            echo "<span color='red'> $battery%</span>"
+        fi
+    else
+        echo "     "
+    fi
+fi
+

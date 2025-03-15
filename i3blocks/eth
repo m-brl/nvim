@@ -1,0 +1,17 @@
+#!/bin/bash
+
+connections=`nmcli device status | grep ethernet`
+
+IFS=$'\n'
+
+for connection in $connections
+do
+    device=`echo $connection | awk '{print $1}'`
+    status=`echo $connection | awk '{print $3}'`
+    if [ "$status" == "connected" ]; then
+        echo "<span color='light green'> Ethernet</span>"
+        exit 0
+    fi
+done
+
+echo "<span color='red'> No Ethernet</span>"
